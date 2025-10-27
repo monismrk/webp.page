@@ -2,357 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monis Mrk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>monis mrk</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        html, body {
+            height: 100vh;
+            margin: 0;
             font-family: 'Inter', sans-serif;
-        }
-        [x-cloak] { display: none !important; }
-        html {
-            scroll-behavior: smooth;
+            /* Prevents overflow on smaller screens during layout shifts */
+            overflow-x: hidden;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<!--
+  Default: flex-col for a top/bottom layout on mobile.
+  md:flex-row: Switches to a side-by-side layout on medium screens (landscape phones, tablets) and larger.
+-->
+<body class="bg-gray-100 flex flex-col md:flex-row h-screen">
 
-    <div class="min-h-screen" x-data="{ open: false }">
-        <!-- Header --><header class="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-sm">
-            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-                <div class="flex lg:flex-1">
-                    <div class="flex lg:hidden mr-4">
-                        <button @click="open = true" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-                            <span class="sr-only">Open main menu</span>
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                            </svg>
-                        </button>
-                    </div>
-                    <a href="index.html" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Monis Mrk</span>
-                        <div class="flex items-center">
-                            <span class="text-xl font-bold tracking-tight">Monis Mrk</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="hidden lg:flex lg:gap-x-12">
-                    <a href="index.html" class="text-sm font-semibold leading-6 text-indigo-600 transition-colors">Presence</a>
-                    <a href="canvas.html" class="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600 transition-colors">Canvas</a>
-                    <a href="mrkting.html" class="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600 transition-colors">Mrkting</a>
-                    <a href="connect.html" class="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600 transition-colors">Connect</a>
-                </div>
-                <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-6">
-                    <a href="https://www.facebook.com/monis.mrk" class="text-gray-900 hover:text-indigo-600 transition-colors">
-                        <span class="sr-only">Facebook</span>
-                        <i class="fab fa-facebook fa-lg"></i>
-                    </a>
-                    <a href="https://www.instagram.com/monis.mrk" class="text-gray-900 hover:text-indigo-600 transition-colors">
-                        <span class="sr-only">Instagram</span>
-                        <i class="fab fa-instagram fa-lg"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@monismrk" class="text-gray-900 hover:text-indigo-600 transition-colors">
-                        <span class="sr-only">YouTube</span>
-                        <i class="fab fa-youtube fa-lg"></i>
-                    </a>
-                </div>
-            </nav>
-        </header>
-        <!-- Mobile menu --><div class="lg:hidden" role="dialog" aria-modal="true" x-show="open" x-cloak>
-            <!-- Overlay --><div @click="open = false" x-show="open" x-transition:enter="ease-in-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-40"></div>
-        
-            <!-- Menu Panel --><div class="fixed inset-y-0 left-0 z-50 w-full max-w-xs bg-white shadow-xl" 
-                 x-show="open" 
-                 x-transition:enter="transition ease-in-out duration-300 transform" 
-                 x-transition:enter-start="-translate-x-full" 
-                 x-transition:enter-end="translate-x-0" 
-                 x-transition:leave="transition ease-in-out duration-300 transform" 
-                 x-transition:leave-start="translate-x-0" 
-                 x-transition:leave-end="-translate-x-full">
-                
-                <div class="flex h-full flex-col">
-                    <!-- Header of menu --><div class="flex items-center justify-between p-6 border-b border-gray-200">
-                        <a href="index.html" @click="open = false" class="-m-1.5 p-1.5">
-                            <span class="sr-only">Monis Mrk</span>
-                            <div class="flex items-center">
-                                <span class="ml-2 text-xl font-bold tracking-tight">Monis Mrk</span>
-                            </div>
-                        </a>
-                    </div>
-        
-                    <!-- Links --><div class="flex-grow p-6 overflow-y-auto">
-                        <div class="space-y-8">
-                            <div>
-                                <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Navigation</h3>
-                                <div class="mt-4 space-y-1">
-                                    <a href="index.html" @click="open = false" class="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Presence</a>
-                                    <a href="canvas.html" @click="open = false" class="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Canvas</a>
-                                    <a href="mrkting.html" @click="open = false" class="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Mrkting</a>
-                                    <a href="connect.html" @click="open = false" class="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Connect</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- CTA Footer --><div class="mt-auto border-t border-gray-200 p-6">
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Follow Us</h3>
-                            <div class="mt-4 flex items-center space-x-6">
-                                  <a href="https://www.facebook.com/monis.mrk" class="text-gray-500 hover:text-indigo-600">
-                                    <span class="sr-only">Facebook</span>
-                                    <i class="fab fa-facebook fa-2x"></i>
-                                  </a>
-                                  <a href="https://www.instagram.com/monis.mrk" class="text-gray-500 hover:text-indigo-600">
-                                    <span class="sr-only">Instagram</span>
-                                    <i class="fab fa-instagram fa-2x"></i>
-                                  </a>
-                                  <a href="https://www.youtube.com/@monismrk" class="text-gray-500 hover:text-indigo-600">
-                                      <span class="sr-only">YouTube</span>
-                                      <i class="fab fa-youtube fa-2x"></i>
-                                  </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Content for Homepage (Why Us) --><div class="pt-20 relative isolate">
-            <!-- This is the container for the persistent blurred background --><div class="fixed inset-x-0 -top-40 -z-10 h-full w-full transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
-                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-            </div>
-            <!-- Why Us Hero --><main class="px-6 pt-10 lg:px-8">
-                <div class="mx-auto max-w-2xl py-24 sm:py-32 lg:py-40">
-                    <div class="text-center">
-                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Why Web Presence? it's your most powerful tool for expansion.</h1>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">I design and develop high-performance websites powered by serverless hosting, edge logic, and integrated database support.</p>
-                    </div>
-                </div>
-            </main>
-            <!-- Why Us Content Section --><section class="pb-16 sm:pb-24">
-                <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                    <!-- What I Offer Section --><div class="mx-auto max-w-2xl lg:text-center">
-                        <h2 class="text-base font-semibold leading-7 text-indigo-600">What I Offer</h2>
-                        <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Core Services</p>
-                    </div>
-                    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-5xl">
-                        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16">
-                            <div class="relative pl-16">
-                                <dt class="text-base font-semibold leading-7 text-gray-900">
-                                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600">
-                                        <i class="fas fa-bolt text-white"></i>
-                                    </div>
-                                    Web Development
-                                </dt>
-                                <dd class="mt-2 text-base leading-7 text-gray-600">Speed-optimized, mobile-first sites built for reliability and instant load times.</dd>
-                            </div>
-                             <div class="relative pl-16">
-                                <dt class="text-base font-semibold leading-7 text-gray-900">
-                                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600">
-                                        <i class="fas fa-palette text-white"></i>
-                                    </div>
-                                    Web Design
-                                </dt>
-                                <dd class="mt-2 text-base leading-7 text-gray-600">Clean, responsive layouts crafted from the ground up with cutting-edge frontend frameworks and tools.</dd>
-                            </div>
-                             <div class="relative pl-16">
-                                <dt class="text-base font-semibold leading-7 text-gray-900">
-                                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600">
-                                        <i class="fas fa-bolt-lightning text-white"></i>
-                                    </div>
-                                    Edge-Powered Features
-                                </dt>
-                                <dd class="mt-2 text-base leading-7 text-gray-600">Smart serverless functions for contact forms, API calls, redirects, and client-side automation.</dd>
-                            </div>
-                             <div class="relative pl-16">
-                                <dt class="text-base font-semibold leading-7 text-gray-900">
-                                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600">
-                                        <i class="fas fa-database text-white"></i>
-                                    </div>
-                                    Lightweight Data Storage
-                                </dt>
-                                <dd class="mt-2 text-base leading-7 text-gray-600">Integrated database solutions for storing submissions, app data, or customer records.</dd>
-                            </div>
-                             <div class="relative pl-16">
-                                <dt class="text-base font-semibold leading-7 text-gray-900">
-                                    <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600">
-                                        <i class="fas fa-globe text-white"></i>
-                                    </div>
-                                    Global Hosting Infrastructure
-                                </dt>
-                                <dd class="mt-2 text-base leading-7 text-gray-600">Fast, secure, and scalable delivery across a distributed network — no traditional servers required.</dd>
-                            </div>
-                        </dl>
-                    </div>
-
-                    <!-- Managed Hosting Services --><div class="mt-24 sm:mt-32">
-                        <div class="mx-auto max-w-2xl lg:text-center">
-                            <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Managed Hosting Services</p>
-                        </div>
-                        <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-                            <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-                                <div class="flex flex-col rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-900/5">
-                                    <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
-                                        <i class="fas fa-globe fa-fw text-indigo-600 w-6 text-center"></i>
-                                        <span>Domain Hosting</span>
-                                    </dt>
-                                    <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                                        <p class="flex-auto">Effortless domain registration and expert DNS management with seamless integration into Cloudflare’s security features.</p>
-                                    </dd>
-                                </div>
-                                <div class="flex flex-col rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-900/5">
-                                    <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
-                                        <i class="fas fa-server fa-fw text-indigo-600 w-6 text-center"></i>
-                                        <span>Web Hosting</span>
-                                    </dt>
-                                    <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                                        <p class="flex-auto">Host your site on Cloudflare’s global edge network for instant loading worldwide. Benefit from automatic scalability and zero server maintenance.</p>
-                                    </dd>
-                                </div>
-                                <div class="flex flex-col rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-900/5">
-                                    <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
-                                        <i class="fas fa-envelope fa-fw text-indigo-600 w-6 text-center"></i>
-                                        <span>Email Hosting</span>
-                                    </dt>
-                                    <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                                        <p class="flex-auto">Professional email solutions tailored to your domain. Manage your business communications with secure, spam-filtered, and always available email hosting.</p>
-                                    </dd>
-                                </div>
-                            </dl>
-                        </div>
-                    </div>
-                    
-                    <!-- Why This Approach Works Section --><div class="mt-24 sm:mt-32">
-                        <div class="mx-auto max-w-2xl lg:text-center">
-                            <h2 class="text-base font-semibold leading-7 text-indigo-600">Advantages</h2>
-                            <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Why This Approach Works</p>
-                        </div>
-                        <div class="relative mt-16 sm:mt-20">
-                            <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-                                <div class="text-center">
-                                    <div class="flex items-center justify-center h-16 w-16 mx-auto bg-white rounded-full text-3xl shadow-lg ring-1 ring-gray-900/5">
-                                        <i class="fas fa-rocket bg-gradient-to-br from-indigo-600 to-purple-600 bg-clip-text text-transparent"></i>
-                                    </div>
-                                    <h3 class="mt-5 text-lg font-semibold text-gray-900">Loads Faster</h3>
-                                    <p class="mt-2 text-base text-gray-600">Loads faster than traditional hosted websites.</p>
-                                </div>
-                                <div class="text-center">
-                                     <div class="flex items-center justify-center h-16 w-16 mx-auto bg-white rounded-full text-3xl shadow-lg ring-1 ring-gray-900/5">
-                                        <i class="fas fa-shield-halved bg-gradient-to-br from-indigo-600 to-purple-600 bg-clip-text text-transparent"></i>
-                                    </div>
-                                    <h3 class="mt-5 text-lg font-semibold text-gray-900">Completely Secure</h3>
-                                    <p class="mt-2 text-base text-gray-600">Completely secure with automatic SSL protection.</p>
-                                </div>
-                                <div class="text-center">
-                                     <div class="flex items-center justify-center h-16 w-16 mx-auto bg-white rounded-full text-3xl shadow-lg ring-1 ring-gray-900/5">
-                                        <i class="fas fa-expand bg-gradient-to-br from-indigo-600 to-purple-600 bg-clip-text text-transparent"></i>
-                                    </div>
-                                    <h3 class="mt-5 text-lg font-semibold text-gray-900">Fully Scalable</h3>
-                                    <p class="mt-2 text-base text-gray-600">Perfect for small business sites or complex web apps.</p>
-                                </div>
-                                <div class="text-center">
-                                     <div class="flex items-center justify-center h-16 w-16 mx-auto bg-white rounded-full text-3xl shadow-lg ring-1 ring-gray-900/5">
-                                        <i class="fas fa-cogs bg-gradient-to-br from-indigo-600 to-purple-600 bg-clip-text text-transparent"></i>
-                                    </div>
-                                    <h3 class="mt-5 text-lg font-semibold text-gray-900">Low Maintenance</h3>
-                                    <p class="mt-2 text-base text-gray-600">Designed for simplicity, reliability, and low maintenance.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Ideal For Section --><div class="mt-24 sm:mt-32">
-                        <div class="mx-auto max-w-2xl lg:text-center">
-                            <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Ideal For</p>
-                        </div>
-                        <div class="relative mt-16 sm:mt-20">
-                             <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                                <div class="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-900/5 text-center">Statics Development</div>
-                                <div class="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-900/5 text-center">Dynamic Development</div>
-                                <div class="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-900/5 text-center">PWA & Web App</div>
-                                <div class="rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-900/5 text-center">Custom Builds</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- End to End Section --><div class="mt-24 sm:mt-32">
-                        <div class="mx-auto max-w-4xl text-center">
-                            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">End-to-End Development You Can Trust</h2>
-                            <p class="mt-4 text-lg leading-8 text-gray-600">From planning and design to coding and deployment, every website I build runs efficiently on serverless infrastructure — fast, secure, and built to grow with your business.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Our Toolkit Section --><div class="mt-24 sm:mt-32">
-                        <div class="mx-auto max-w-2xl lg:text-center">
-                            <h2 class="text-base font-semibold leading-7 text-indigo-600">Our Toolkit</h2>
-                            <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Future-Proof Technology</p>
-                            <p class="mt-6 text-lg leading-8 text-gray-600">We use a modern, robust technology stack to build solutions that are scalable, secure, and ready for the future.</p>
-                        </div>
-                        <div class="mx-auto mt-16 max-w-5xl">
-                            <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-10 sm:gap-x-12">
-                                <span class="flex items-center gap-x-2 text-lg font-medium text-gray-600">
-                                    <svg class="h-6 w-6" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                        <polygon points="50 15, 10 85, 90 85" style="stroke:#0D9488; stroke-width:10; fill-opacity:0"></polygon>
-                                        <polygon points="50 45, 30 85, 70 85" style="fill:#14B8A6;"></polygon>
-                                    </svg>
-                                    Alpine.js
-                                </span>
-                                <span class="flex items-center gap-x-2 text-lg font-medium text-gray-600"><i class="fab fa-vuejs text-green-500"></i> Vue.js</span>
-                                <span class="flex items-center gap-x-2 text-lg font-medium text-gray-600">
-                                     <svg class="h-6 w-6" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="32" height="32" rx="4" fill="#3178C6"></rect>
-                                        <path fill="#ffffff" d="M11.12 10.93H20.4v2.16h-3.9v10.4h-2.17V13.09h-3.21v-2.16zm12.35 0c.92 0 1.62.24 2.1.7.48.46.72 1.1.72 1.9v.08c0 .8-.24 1.45-.72 1.93s-1.18.72-2.1.72h-1.8V23.5h-2.17V10.93h3.94zm-1.8 4.28h1.15c.42 0 .76-.11 1.03-.33s.4-.5.4-.85v-.07c0-.36-.13-.65-.4-.85s-.6-.3-1.02-.3h-1.16v2.4z"></path>
-                                    </svg>
-                                    TypeScript
-                                </span>
-                                <span class="flex items-center gap-x-2 text-lg font-medium text-gray-600"><i class="fas fa-wind text-cyan-500"></i> Tailwind CSS</span>
-                                <span class="flex items-center gap-x-2 text-lg font-medium text-gray-600"><i class="fab fa-bootstrap text-purple-600"></i> Bootstrap</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CTA Section --><div class="mt-24 sm:mt-32">
-                        <div class="relative isolate overflow-hidden bg-gradient-to-r from-indigo-600 to-purple-700 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
-                            <h2 class="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">Fast, Secure, and Modern Websites — Built for the Future</h2>
-                            <div class="mt-10 flex items-center justify-center gap-x-6">
-                                <a href="https://wa.me/918868844602" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Let’s Build Something Powerful</a>
-                            </div>
-                            <svg viewBox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]" aria-hidden="true">
-                                <circle cx="512" cy="512" r="512" fill="url(#8d958450-c69f-4251-94bc-4e091a323369)" fill-opacity="0.7"></circle>
-                                <defs>
-                                    <radialGradient id="8d958450-c69f-4251-94bc-4e091a323369">
-                                        <stop stop-color="#7775D6"></stop>
-                                        <stop offset="1" stop-color="#E935C1"></stop>
-                                    </radialGradient>
-                                </defs>
-                            </svg>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-        </div>
-
-        <!-- Footer --><footer class="bg-gray-50 border-t border-gray-200">
-            <div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
-                <div class="flex justify-center space-x-6 md:order-2">
-                    <a href="privacy.html" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Privacy</a>
-                    <a href="terms.html" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Terms</a>
-                </div>
-                <div class="mt-8 md:order-1 md:mt-0">
-                    <p class="text-center text-sm leading-6 text-gray-500">&copy; 2025 Monis Mrk. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
+    <!-- 
+      Map Container
+      Default (mobile): Takes up the top 50% of the height and full width.
+      Medium screens & up: Takes up the left 50% of the width and full height.
+    -->
+    <div class="h-1/2 w-full md:w-1/2 md:h-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6991.773625149632!2d79.0232364!3d28.8124467!3m2!1i1024!2i768!4f13.1!3m3!1m2!s0x390a8dfea7090f1f%3A0xd9b379e5dfe0d964!2sMonis%20Mrk!5e0!3m2!1sen!2sin!4v1760807126835!5m2!1sen!2sin" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+
+    <!-- 
+      Info Container
+      Default (mobile): Takes up the bottom 50% of the height and full width.
+      Medium screens & up: Takes up the right 50% of the width and full height.
+    -->
+    <div class="h-1/2 w-full md:w-1/2 md:h-full flex items-center justify-center p-4">
+        <div class="p-8 text-center w-full max-w-md">
+            <h1 class="text-3xl font-bold mb-1 text-gray-800">monis mrk</h1>
+            <p class="text-md font-medium text-gray-600 mb-3">graphic designer & developer</p>
+            <p class="text-gray-500 mb-6">I'm a Solution Design Specialist from Rampur, Uttar Pradesh, driven by a deep interest in solving real-world problems through smart, effective design.</p>
+            
+            <!-- Social Icons -->
+            <div class="mt-6">
+                <p class="text-gray-500 text-sm mb-4">Connect with us</p>
+                <div class="flex justify-center space-x-6">
+                    <!-- Website -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors" aria-label="Website">
+                        <i class="fas fa-globe fa-fw text-2xl"></i>
+                    </a>
+                    <!-- Google -->
+                    <a href="#" class="text-gray-400 hover:text-red-500 transition-colors" aria-label="Google">
+                        <i class="fab fa-google fa-fw text-2xl"></i>
+                    </a>
+                    <!-- Email -->
+                    <a href="#" class="text-gray-400 hover:text-gray-600 transition-colors" aria-label="Email">
+                        <i class="fas fa-envelope fa-fw text-2xl"></i>
+                    </a>
+                    <!-- WhatsApp -->
+                    <a href="#" class="text-gray-400 hover:text-green-500 transition-colors" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp fa-fw text-2xl"></i>
+                    </a>
+                    <!-- Phone -->
+                    <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors" aria-label="Phone">
+                       <i class="fas fa-phone fa-fw text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This script prevents zooming on mobile devices by intercepting touch gestures.
+        document.addEventListener('touchmove', function (event) {
+            // If there is more than one touch (pinch gesture), prevent the default browser action (zoom).
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+    </script>
 
 </body>
 </html>
-
-
 
